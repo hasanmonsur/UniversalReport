@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>UniversalReport.Core</PackageId>
+    <Description>Core models, contracts, geometry primitives, and public SDK entry point for UniversalReport.NET.</Description>
+  </PropertyGroup>
+</Project>

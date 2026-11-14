@@ -1,0 +1,135 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1758
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A1000001-0000-4000-8000-000000000001}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{A1000002-0000-4000-8000-000000000002}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A1000003-0000-4000-8000-000000000003}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport", "src\UniversalReport\UniversalReport.csproj", "{B1000001-0000-4000-8000-000000000001}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport.Core", "src\UniversalReport.Core\UniversalReport.Core.csproj", "{B1000002-0000-4000-8000-000000000002}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport.Definitions", "src\UniversalReport.Definitions\UniversalReport.Definitions.csproj", "{B1000003-0000-4000-8000-000000000003}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport.Expressions", "src\UniversalReport.Expressions\UniversalReport.Expressions.csproj", "{B1000004-0000-4000-8000-000000000004}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport.Data", "src\UniversalReport.Data\UniversalReport.Data.csproj", "{B1000005-0000-4000-8000-000000000005}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport.Layout", "src\UniversalReport.Layout\UniversalReport.Layout.csproj", "{B1000006-0000-4000-8000-000000000006}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport.Rendering.Skia", "src\UniversalReport.Rendering.Skia\UniversalReport.Rendering.Skia.csproj", "{B1000007-0000-4000-8000-000000000007}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport.Export.Pdf", "src\UniversalReport.Export.Pdf\UniversalReport.Export.Pdf.csproj", "{B1000008-0000-4000-8000-000000000008}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport.Export.Excel", "src\UniversalReport.Export.Excel\UniversalReport.Export.Excel.csproj", "{B1000009-0000-4000-8000-000000000009}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport.Export.Html", "src\UniversalReport.Export.Html\UniversalReport.Export.Html.csproj", "{B1000010-0000-4000-8000-000000000010}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport.AspNetCore", "src\UniversalReport.AspNetCore\UniversalReport.AspNetCore.csproj", "{B1000011-0000-4000-8000-000000000011}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport.Rdlc", "src\UniversalReport.Rdlc\UniversalReport.Rdlc.csproj", "{B1000012-0000-4000-8000-000000000012}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport.Samples.Banking", "samples\Banking\UniversalReport.Samples.Banking.csproj", "{C1000001-0000-4000-8000-000000000001}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport.Samples.Console", "samples\Console\UniversalReport.Samples.Console.csproj", "{C1000002-0000-4000-8000-000000000002}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport.Samples.AspNetCoreHost", "samples\AspNetCoreHost\UniversalReport.Samples.AspNetCoreHost.csproj", "{C1000003-0000-4000-8000-000000000003}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalReport.UnitTests", "tests\UniversalReport.UnitTests\UniversalReport.UnitTests.csproj", "{D1000001-0000-4000-8000-000000000001}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1000001-0000-4000-8000-000000000001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1000001-0000-4000-8000-000000000001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1000001-0000-4000-8000-000000000001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1000001-0000-4000-8000-000000000001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1000002-0000-4000-8000-000000000002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1000002-0000-4000-8000-000000000002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1000002-0000-4000-8000-000000000002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1000002-0000-4000-8000-000000000002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1000003-0000-4000-8000-000000000003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1000003-0000-4000-8000-000000000003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1000003-0000-4000-8000-000000000003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1000003-0000-4000-8000-000000000003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1000004-0000-4000-8000-000000000004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1000004-0000-4000-8000-000000000004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1000004-0000-4000-8000-000000000004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1000004-0000-4000-8000-000000000004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1000005-0000-4000-8000-000000000005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1000005-0000-4000-8000-000000000005}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1000005-0000-4000-8000-000000000005}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1000005-0000-4000-8000-000000000005}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1000006-0000-4000-8000-000000000006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1000006-0000-4000-8000-000000000006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1000006-0000-4000-8000-000000000006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1000006-0000-4000-8000-000000000006}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1000007-0000-4000-8000-000000000007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1000007-0000-4000-8000-000000000007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1000007-0000-4000-8000-000000000007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1000007-0000-4000-8000-000000000007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1000008-0000-4000-8000-000000000008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1000008-0000-4000-8000-000000000008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1000008-0000-4000-8000-000000000008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1000008-0000-4000-8000-000000000008}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1000009-0000-4000-8000-000000000009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1000009-0000-4000-8000-000000000009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1000009-0000-4000-8000-000000000009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1000009-0000-4000-8000-000000000009}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1000010-0000-4000-8000-000000000010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1000010-0000-4000-8000-000000000010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1000010-0000-4000-8000-000000000010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1000010-0000-4000-8000-000000000010}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1000011-0000-4000-8000-000000000011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1000011-0000-4000-8000-000000000011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1000011-0000-4000-8000-000000000011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1000011-0000-4000-8000-000000000011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1000012-0000-4000-8000-000000000012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1000012-0000-4000-8000-000000000012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1000012-0000-4000-8000-000000000012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1000012-0000-4000-8000-000000000012}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1000001-0000-4000-8000-000000000001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1000001-0000-4000-8000-000000000001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1000001-0000-4000-8000-000000000001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1000001-0000-4000-8000-000000000001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1000002-0000-4000-8000-000000000002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1000002-0000-4000-8000-000000000002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1000002-0000-4000-8000-000000000002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1000002-0000-4000-8000-000000000002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1000003-0000-4000-8000-000000000003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1000003-0000-4000-8000-000000000003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1000003-0000-4000-8000-000000000003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1000003-0000-4000-8000-000000000003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1000001-0000-4000-8000-000000000001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1000001-0000-4000-8000-000000000001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1000001-0000-4000-8000-000000000001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1000001-0000-4000-8000-000000000001}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B1000001-0000-4000-8000-000000000001} = {A1000001-0000-4000-8000-000000000001}
+		{B1000002-0000-4000-8000-000000000002} = {A1000001-0000-4000-8000-000000000001}
+		{B1000003-0000-4000-8000-000000000003} = {A1000001-0000-4000-8000-000000000001}
+		{B1000004-0000-4000-8000-000000000004} = {A1000001-0000-4000-8000-000000000001}
+		{B1000005-0000-4000-8000-000000000005} = {A1000001-0000-4000-8000-000000000001}
+		{B1000006-0000-4000-8000-000000000006} = {A1000001-0000-4000-8000-000000000001}
+		{B1000007-0000-4000-8000-000000000007} = {A1000001-0000-4000-8000-000000000001}
+		{B1000008-0000-4000-8000-000000000008} = {A1000001-0000-4000-8000-000000000001}
+		{B1000009-0000-4000-8000-000000000009} = {A1000001-0000-4000-8000-000000000001}
+		{B1000010-0000-4000-8000-000000000010} = {A1000001-0000-4000-8000-000000000001}
+		{B1000011-0000-4000-8000-000000000011} = {A1000001-0000-4000-8000-000000000001}
+		{B1000012-0000-4000-8000-000000000012} = {A1000001-0000-4000-8000-000000000001}
+		{C1000001-0000-4000-8000-000000000001} = {A1000002-0000-4000-8000-000000000002}
+		{C1000002-0000-4000-8000-000000000002} = {A1000002-0000-4000-8000-000000000002}
+		{C1000003-0000-4000-8000-000000000003} = {A1000002-0000-4000-8000-000000000002}
+		{D1000001-0000-4000-8000-000000000001} = {A1000003-0000-4000-8000-000000000003}
+	EndGlobalSection
+EndGlobal

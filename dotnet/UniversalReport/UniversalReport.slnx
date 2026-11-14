@@ -1,0 +1,24 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/UniversalReport/UniversalReport.csproj" />
+    <Project Path="src/UniversalReport.Core/UniversalReport.Core.csproj" />
+    <Project Path="src/UniversalReport.Definitions/UniversalReport.Definitions.csproj" />
+    <Project Path="src/UniversalReport.Expressions/UniversalReport.Expressions.csproj" />
+    <Project Path="src/UniversalReport.Data/UniversalReport.Data.csproj" />
+    <Project Path="src/UniversalReport.Layout/UniversalReport.Layout.csproj" />
+    <Project Path="src/UniversalReport.Rendering.Skia/UniversalReport.Rendering.Skia.csproj" />
+    <Project Path="src/UniversalReport.Export.Pdf/UniversalReport.Export.Pdf.csproj" />
+    <Project Path="src/UniversalReport.Export.Excel/UniversalReport.Export.Excel.csproj" />
+    <Project Path="src/UniversalReport.Export.Html/UniversalReport.Export.Html.csproj" />
+    <Project Path="src/UniversalReport.AspNetCore/UniversalReport.AspNetCore.csproj" />
+    <Project Path="src/UniversalReport.Rdlc/UniversalReport.Rdlc.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/Banking/UniversalReport.Samples.Banking.csproj" />
+    <Project Path="samples/Console/UniversalReport.Samples.Console.csproj" />
+    <Project Path="samples/AspNetCoreHost/UniversalReport.Samples.AspNetCoreHost.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/UniversalReport.UnitTests/UniversalReport.UnitTests.csproj" />
+  </Folder>
+</Solution>

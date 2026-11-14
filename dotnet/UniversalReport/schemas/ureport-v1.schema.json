@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universalreport.net/schemas/ureport-v1.schema.json",
+  "title": "UniversalReport Template Definition v1.0",
+  "type": "object",
+  "required": ["schemaVersion", "reportId", "page", "bands"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0" },
+    "reportId": { "type": "string", "minLength": 2, "maxLength": 128, "pattern": "^[a-zA-Z0-9._-]+$" },
+    "title": { "type": "string", "maxLength": 256 },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "author": { "type": "string" },
+        "category": { "type": "string" },
+        "version": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "page": {
+      "type": "object",
+      "required": ["size", "unit", "orientation"],
+      "properties": {
+        "size": { "type": "string", "enum": ["A4", "Letter", "Legal", "Custom"] },
+        "unit": { "type": "string", "enum": ["mm", "pt", "in"] },
+        "orientation": { "type": "string", "enum": ["Portrait", "Landscape"] },
+        "width": { "type": "number", "minimum": 10 },
+        "height": { "type": "number", "minimum": 10 },
+        "margins": {
+          "type": "object",
+          "properties": {
+            "top": { "type": "number", "minimum": 0 },
+            "right": { "type": "number", "minimum": 0 },
+            "bottom": { "type": "number", "minimum": 0 },
+            "left": { "type": "number", "minimum": 0 }
+          }
+        },
+        "watermark": { "type": "string", "maxLength": 120 }
+      }
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type"],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$" },
+          "type": { "type": "string", "enum": ["String", "Decimal", "Int32", "DateTime", "Boolean"] },
+          "required": { "type": "boolean" },
+          "defaultValue": {}
+        }
+      }
+    },
+    "datasets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "source"],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$" },
+          "source": { "type": "string", "enum": ["External", "Query", "Json", "Rest"] },
+          "queryId": { "type": "string" },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name", "type"],
+              "properties": {
+                "name": { "type": "string" },
+                "type": { "type": "string", "enum": ["String", "Decimal", "Int32", "DateTime", "Boolean"] }
+              }
+            }
+          }
+        }
+      }
+    },
+    "styles": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "fontFamily": { "type": "string" },
+          "fontSizePt": { "type": "number", "minimum": 5, "maximum": 72 },
+          "fontWeight": { "type": "string", "enum": ["Normal", "Medium", "SemiBold", "Bold"] },
+          "color": { "type": "string" },
+          "backgroundColor": { "type": "string" },
+          "align": { "type": "string", "enum": ["Left", "Center", "Right"] }
+        }
+      }
+    },
+    "bands": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type", "elements"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["ReportHeader", "PageHeader", "GroupHeader", "Detail", "GroupFooter", "ReportFooter", "PageFooter"]
+          },
+          "dataset": { "type": "string" },
+          "groupBy": { "type": "string" },
+          "height": { "type": "number", "minimum": 0 },
+          "keepTogether": { "type": "boolean" },
+          "repeatOnEveryPage": { "type": "boolean" },
+          "elements": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["type"],
+              "properties": {
+                "id": { "type": "string" },
+                "type": { "type": "string", "enum": ["Text", "Table", "Line", "Rectangle", "Image", "QrCode"] },
+                "x": { "type": "number" },
+                "y": { "type": "number" },
+                "width": { "type": "number" },
+                "height": { "type": "number" },
+                "value": { "type": "string" },
+                "expression": { "type": "string" },
+                "format": { "type": "string" },
+                "style": { "type": "string" },
+                "align": { "type": "string", "enum": ["Left", "Center", "Right"] },
+                "fontSizePt": { "type": "number" },
+                "fontWeight": { "type": "string", "enum": ["Normal", "Medium", "SemiBold", "Bold"] },
+                "color": { "type": "string" },
+                "colorExpression": { "type": "string" },
+                "backgroundColor": { "type": "string" },
+                "backgroundColorExpression": { "type": "string" },
+                "borderColor": { "type": "string" },
+                "canGrow": { "type": "boolean" },
+                "repeatHeaders": { "type": "boolean" },
+                "columns": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["header", "expression"],
+                    "properties": {
+                      "header": { "type": "string" },
+                      "expression": { "type": "string" },
+                      "width": { "type": "number" },
+                      "align": { "type": "string", "enum": ["Left", "Center", "Right"] },
+                      "format": { "type": "string" },
+                      "summary": { "type": "string", "enum": ["None", "Sum", "Count", "Avg", "Last"] },
+                      "canGrow": { "type": "boolean" },
+                      "colorExpression": { "type": "string" },
+                      "backgroundColorExpression": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

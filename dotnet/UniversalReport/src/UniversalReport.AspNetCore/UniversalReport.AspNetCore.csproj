@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>UniversalReport.AspNetCore</PackageId>
+    <Description>ASP.NET Core DI registration and minimal API endpoints for UniversalReport.NET.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UniversalReport.Core\UniversalReport.Core.csproj" />
+    <ProjectReference Include="..\UniversalReport.Definitions\UniversalReport.Definitions.csproj" />
+    <ProjectReference Include="..\UniversalReport.Expressions\UniversalReport.Expressions.csproj" />
+    <ProjectReference Include="..\UniversalReport.Data\UniversalReport.Data.csproj" />
+    <ProjectReference Include="..\UniversalReport.Layout\UniversalReport.Layout.csproj" />
+    <ProjectReference Include="..\UniversalReport.Rendering.Skia\UniversalReport.Rendering.Skia.csproj" />
+    <ProjectReference Include="..\UniversalReport.Export.Pdf\UniversalReport.Export.Pdf.csproj" />
+    <ProjectReference Include="..\UniversalReport.Export.Excel\UniversalReport.Export.Excel.csproj" />
+    <ProjectReference Include="..\UniversalReport.Export.Html\UniversalReport.Export.Html.csproj" />
+    <ProjectReference Include="..\UniversalReport.Rdlc\UniversalReport.Rdlc.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>UniversalReport.Rdlc</PackageId>
+    <Description>Microsoft RDLC/RDL XML import converter and compatibility diagnostics for UniversalReport.NET.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UniversalReport.Core\UniversalReport.Core.csproj" />
+    <ProjectReference Include="..\UniversalReport.Definitions\UniversalReport.Definitions.csproj" />
+  </ItemGroup>
+</Project>

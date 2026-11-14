@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>UniversalReport.Export.Pdf</PackageId>
+    <Description>Isolated PDF export backend for UniversalReport.NET producing searchable multi-page Unicode PDFs.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UniversalReport.Core\UniversalReport.Core.csproj" />
+    <ProjectReference Include="..\UniversalReport.Rendering.Skia\UniversalReport.Rendering.Skia.csproj" />
+  </ItemGroup>
+</Project>

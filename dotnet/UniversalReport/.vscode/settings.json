@@ -1,0 +1,17 @@
+{
+  "dotnet.defaultSolution": "UniversalReport.sln",
+  "editor.formatOnSave": true,
+  "files.associations": {
+    "*.ureport": "json"
+  },
+  "json.schemas": [
+    {
+      "fileMatch": ["*.ureport"],
+      "url": "./schemas/ureport-v1.schema.json"
+    }
+  ],
+  "files.exclude": {
+    "**/bin": true,
+    "**/obj": true
+  }
+}

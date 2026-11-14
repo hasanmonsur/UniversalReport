@@ -1,0 +1,6 @@
+{
+  "name": "UniversalReport.NET Studio",
+  "description": "Cross-platform RDLC-like .NET 10 reporting engine, visual .ureport designer, AST expression compiler, and banking export studio.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

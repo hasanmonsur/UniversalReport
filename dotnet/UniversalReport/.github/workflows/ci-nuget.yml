@@ -1,0 +1,42 @@
+name: UniversalReport.NET CI & NuGet Pack
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET 10 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            9.0.x
+            10.0.x
+      - name: Install Linux Noto Fonts
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y fontconfig fonts-noto-core fonts-noto-extra
+      - name: Restore & Build
+        working-directory: dotnet/UniversalReport
+        run: |
+          dotnet restore UniversalReport.sln
+          dotnet build UniversalReport.sln -c Release --no-restore
+      - name: Run Unit Tests
+        working-directory: dotnet/UniversalReport
+        run: dotnet test tests/UniversalReport.UnitTests/UniversalReport.UnitTests.csproj -c Release --no-build
+      - name: Pack NuGet Packages
+        working-directory: dotnet/UniversalReport
+        run: dotnet pack UniversalReport.sln -c Release --no-build -o ./artifacts/nupkg
+      - name: Upload NuGet Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nupkg-${{ matrix.os }}
+          path: dotnet/UniversalReport/artifacts/nupkg/*.nupkg

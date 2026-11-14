@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>UniversalReport.Expressions</PackageId>
+    <Description>Sandboxed lexer, recursive-descent parser, typed AST, static validator, and optimized evaluator.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UniversalReport.Core\UniversalReport.Core.csproj" />
+  </ItemGroup>
+</Project>

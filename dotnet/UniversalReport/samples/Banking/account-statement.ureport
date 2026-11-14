@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "1.0",
+  "reportId": "account-statement",
+  "title": "Retail & Corporate Account Statement",
+  "page": {
+    "size": "A4",
+    "unit": "mm",
+    "orientation": "Portrait",
+    "margins": { "top": 14, "right": 14, "bottom": 14, "left": 14 }
+  },
+  "parameters": [
+    { "name": "AccountNo", "type": "String", "required": true, "defaultValue": "1040-883920-001" },
+    { "name": "AccountHolder", "type": "String", "required": true, "defaultValue": "Meghna Textile Mills Ltd. (মেঘনা টেক্সটাইল)" },
+    { "name": "Currency", "type": "String", "required": true, "defaultValue": "BDT" },
+    { "name": "OpeningBalance", "type": "Decimal", "required": true, "defaultValue": 125000.00 },
+    { "name": "PeriodLabel", "type": "String", "required": true, "defaultValue": "01 Nov 2026 - 14 Nov 2026" }
+  ],
+  "datasets": [
+    {
+      "name": "Transactions",
+      "source": "External",
+      "fields": [
+        { "name": "TranDate", "type": "DateTime" },
+        { "name": "Reference", "type": "String" },
+        { "name": "Particulars", "type": "String" },
+        { "name": "Debit", "type": "Decimal" },
+        { "name": "Credit", "type": "Decimal" },
+        { "name": "Balance", "type": "Decimal" }
+      ]
+    }
+  ],
+  "bands": [
+    {
+      "id": "page-header",
+      "type": "PageHeader",
+      "height": 14,
+      "repeatOnEveryPage": true,
+      "elements": [
+        { "id": "hdr-bank", "type": "Text", "x": 0, "y": 0, "width": 110, "height": 5, "value": "Dhaka Commercial Bank PLC · Motijheel Principal Branch", "fontSizePt": 9, "fontWeight": "Bold", "color": "#0F172A" },
+        { "id": "hdr-acct", "type": "Text", "x": 112, "y": 0, "width": 70, "height": 5, "expression": "=\"Account: \" + Parameters.AccountNo", "fontSizePt": 8.5, "align": "Right", "color": "#475569" },
+        { "id": "hdr-line", "type": "Line", "x": 0, "y": 8, "width": 182, "height": 0.5, "color": "#CBD5E1" }
+      ]
+    },
+    {
+      "id": "report-header",
+      "type": "ReportHeader",
+      "height": 34,
+      "elements": [
+        { "id": "title", "type": "Text", "x": 0, "y": 0, "width": 120, "height": 7, "value": "ACCOUNT STATEMENT", "fontSizePt": 15, "fontWeight": "Bold", "color": "#0F172A" },
+        { "id": "period", "type": "Text", "x": 120, "y": 1, "width": 62, "height": 5, "expression": "=Parameters.PeriodLabel", "fontSizePt": 8.5, "align": "Right", "color": "#475569" },
+        { "id": "holder", "type": "Text", "x": 0, "y": 9, "width": 120, "height": 5, "expression": "=Parameters.AccountHolder", "fontSizePt": 10, "fontWeight": "SemiBold", "color": "#0F172A" },
+        { "id": "summary-box", "type": "Rectangle", "x": 0, "y": 17, "width": 182, "height": 12, "backgroundColor": "#F8FAFC", "borderColor": "#CBD5E1" },
+        { "id": "open-bal-lbl", "type": "Text", "x": 4, "y": 19, "width": 48, "height": 4, "value": "Opening Balance", "fontSizePt": 8, "color": "#475569" },
+        { "id": "open-bal-val", "type": "Text", "x": 4, "y": 23.5, "width": 48, "height": 4.5, "expression": "=Format(Parameters.OpeningBalance, \"N2\")", "fontSizePt": 9.5, "fontWeight": "Bold", "color": "#0F172A" },
+        { "id": "tot-deb-lbl", "type": "Text", "x": 62, "y": 19, "width": 48, "height": 4, "value": "Total Debit", "fontSizePt": 8, "color": "#475569" },
+        { "id": "tot-deb-val", "type": "Text", "x": 62, "y": 23.5, "width": 48, "height": 4.5, "expression": "=Format(Sum(Fields.Debit, \"Transactions\"), \"N2\")", "fontSizePt": 9.5, "fontWeight": "Bold", "color": "#DC2626" },
+        { "id": "tot-crd-lbl", "type": "Text", "x": 120, "y": 19, "width": 58, "height": 4, "value": "Total Credit", "fontSizePt": 8, "color": "#475569" },
+        { "id": "tot-crd-val", "type": "Text", "x": 120, "y": 23.5, "width": 58, "height": 4.5, "expression": "=Format(Sum(Fields.Credit, \"Transactions\"), \"N2\")", "fontSizePt": 9.5, "fontWeight": "Bold", "color": "#16A34A" }
+      ]
+    },
+    {
+      "id": "detail-txns",
+      "type": "Detail",
+      "dataset": "Transactions",
+      "elements": [
+        {
+          "id": "txn-table",
+          "type": "Table",
+          "x": 0,
+          "y": 0,
+          "width": 182,
+          "repeatHeaders": true,
+          "columns": [
+            { "header": "Date", "expression": "=Format(Fields.TranDate, \"dd-MM-yyyy\")", "width": 24, "align": "Left" },
+            { "header": "Reference", "expression": "=Fields.Reference", "width": 28, "align": "Left" },
+            { "header": "Particulars", "expression": "=Fields.Particulars", "width": 58, "align": "Left" },
+            { "header": "Debit", "expression": "=Fields.Debit", "width": 24, "align": "Right", "format": "N2", "summary": "Sum" },
+            { "header": "Credit", "expression": "=Fields.Credit", "width": 24, "align": "Right", "format": "N2", "summary": "Sum" },
+            { "header": "Running Bal.", "expression": "=Fields.Balance", "width": 24, "align": "Right", "format": "N2", "summary": "Last" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "report-footer",
+      "type": "ReportFooter",
+      "height": 18,
+      "elements": [
+        { "id": "close-box", "type": "Rectangle", "x": 0, "y": 3, "width": 182, "height": 11, "backgroundColor": "#F1F5F9", "borderColor": "#94A3B8" },
+        { "id": "close-lbl", "type": "Text", "x": 4, "y": 6, "width": 90, "height": 5, "expression": "=\"Closing Balance (\" + Parameters.Currency + \")\"", "fontSizePt": 9, "fontWeight": "Bold", "color": "#0F172A" },
+        { "id": "close-val", "type": "Text", "x": 100, "y": 6, "width": 78, "height": 5, "expression": "=Format(Parameters.OpeningBalance + Sum(Fields.Credit, \"Transactions\") - Sum(Fields.Debit, \"Transactions\"), \"N2\")", "fontSizePt": 9.5, "fontWeight": "Bold", "align": "Right", "color": "#0F172A" }
+      ]
+    },
+    {
+      "id": "page-footer",
+      "type": "PageFooter",
+      "height": 10,
+      "repeatOnEveryPage": true,
+      "elements": [
+        { "id": "ftr-line", "type": "Line", "x": 0, "y": 0, "width": 182, "height": 0.4, "color": "#CBD5E1" },
+        { "id": "ftr-note", "type": "Text", "x": 0, "y": 3, "width": 120, "height": 4, "value": "System-generated statement · UniversalReport.NET Deterministic Engine", "fontSizePt": 7.5, "color": "#64748B" },
+        { "id": "ftr-pg", "type": "Text", "x": 122, "y": 3, "width": 60, "height": 4, "expression": "=\"Page \" + Globals.PageNumber + \" of \" + Globals.TotalPages", "fontSizePt": 7.5, "align": "Right", "color": "#475569" }
+      ]
+    }
+  ]
+}

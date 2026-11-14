@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "1.0",
+  "reportId": "remittance-advice",
+  "title": "Inward Foreign Remittance Advice",
+  "page": {
+    "size": "A4",
+    "unit": "mm",
+    "orientation": "Portrait",
+    "margins": { "top": 14, "right": 14, "bottom": 14, "left": 14 }
+  },
+  "parameters": [
+    { "name": "RemittanceRef", "type": "String", "required": true, "defaultValue": "REM-2026-994812" },
+    { "name": "BeneficiaryName", "type": "String", "required": true, "defaultValue": "Ananya Chowdhury (অনন্যা চৌধুরী)" },
+    { "name": "BeneficiaryAccount", "type": "String", "required": true, "defaultValue": "2091-440192-004" },
+    { "name": "IncentiveRate", "type": "Decimal", "required": true, "defaultValue": 0.025 }
+  ],
+  "datasets": [
+    {
+      "name": "RemittanceLines",
+      "source": "External",
+      "fields": [
+        { "name": "Component", "type": "String" },
+        { "name": "SenderBank", "type": "String" },
+        { "name": "FxCurrency", "type": "String" },
+        { "name": "FxAmount", "type": "Decimal" },
+        { "name": "ExRate", "type": "Decimal" },
+        { "name": "BdtAmount", "type": "Decimal" }
+      ]
+    }
+  ],
+  "bands": [
+    {
+      "id": "page-header",
+      "type": "PageHeader",
+      "height": 12,
+      "repeatOnEveryPage": true,
+      "elements": [
+        { "id": "hdr-left", "type": "Text", "x": 0, "y": 0, "width": 110, "height": 5, "value": "Dhaka Commercial Bank PLC · International Remittance Division", "fontSizePt": 9, "fontWeight": "Bold", "color": "#0F172A" },
+        { "id": "hdr-ref", "type": "Text", "x": 112, "y": 0, "width": 70, "height": 5, "expression": "=\"Ref: \" + Parameters.RemittanceRef", "fontSizePt": 8.5, "align": "Right", "color": "#475569" }
+      ]
+    },
+    {
+      "id": "report-header",
+      "type": "ReportHeader",
+      "height": 40,
+      "elements": [
+        { "id": "rem-title", "type": "Text", "x": 0, "y": 0, "width": 130, "height": 7, "value": "REMITTANCE CREDIT ADVICE", "fontSizePt": 15, "fontWeight": "Bold", "color": "#0F172A" },
+        { "id": "ben-name", "type": "Text", "x": 0, "y": 10, "width": 130, "height": 5, "expression": "=\"Beneficiary: \" + Parameters.BeneficiaryName", "fontSizePt": 9.5, "fontWeight": "SemiBold", "color": "#0F172A" },
+        { "id": "ben-acct", "type": "Text", "x": 0, "y": 16, "width": 130, "height": 5, "expression": "=\"Credit Account: \" + Parameters.BeneficiaryAccount", "fontSizePt": 9, "color": "#475569" },
+        { "id": "qr-verify", "type": "QrCode", "x": 154, "y": 0, "width": 28, "height": 28, "expression": "=\"VERIFY|\" + Parameters.RemittanceRef + \"|\" + Parameters.BeneficiaryAccount" }
+      ]
+    },
+    {
+      "id": "detail-lines",
+      "type": "Detail",
+      "dataset": "RemittanceLines",
+      "elements": [
+        {
+          "id": "rem-table",
+          "type": "Table",
+          "x": 0,
+          "y": 0,
+          "width": 182,
+          "repeatHeaders": true,
+          "columns": [
+            { "header": "Component", "expression": "=Fields.Component", "width": 46, "align": "Left" },
+            { "header": "Originating Bank", "expression": "=Fields.SenderBank", "width": 44, "align": "Left" },
+            { "header": "CCY", "expression": "=Fields.FxCurrency", "width": 16, "align": "Center" },
+            { "header": "FX Amount", "expression": "=Fields.FxAmount", "width": 24, "align": "Right", "format": "N2" },
+            { "header": "Rate", "expression": "=Fields.ExRate", "width": 20, "align": "Right", "format": "N2" },
+            { "header": "BDT Credit", "expression": "=Fields.BdtAmount", "width": 32, "align": "Right", "format": "N2", "summary": "Sum" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "report-footer",
+      "type": "ReportFooter",
+      "height": 30,
+      "elements": [
+        { "id": "tot-box", "type": "Rectangle", "x": 0, "y": 4, "width": 182, "height": 10, "backgroundColor": "#F8FAFC", "borderColor": "#CBD5E1" },
+        { "id": "tot-lbl", "type": "Text", "x": 4, "y": 6.5, "width": 90, "height": 5, "value": "Net Disbursed BDT (incl. Govt. Cash Incentive)", "fontSizePt": 9, "fontWeight": "Bold", "color": "#0F172A" },
+        { "id": "tot-val", "type": "Text", "x": 100, "y": 6.5, "width": 78, "height": 5, "expression": "=Format(Sum(Fields.BdtAmount, \"RemittanceLines\"), \"N2\")", "fontSizePt": 9.5, "fontWeight": "Bold", "align": "Right", "color": "#16A34A" },
+        { "id": "sig-line", "type": "Line", "x": 124, "y": 24, "width": 58, "height": 0.4, "color": "#475569" },
+        { "id": "sig-lbl", "type": "Text", "x": 124, "y": 25.5, "width": 58, "height": 4, "value": "Authorized Signatory", "fontSizePt": 8, "align": "Center", "color": "#475569" }
+      ]
+    },
+    {
+      "id": "page-footer",
+      "type": "PageFooter",
+      "height": 10,
+      "repeatOnEveryPage": true,
+      "elements": [
+        { "id": "ftr-pg", "type": "Text", "x": 122, "y": 3, "width": 60, "height": 4, "expression": "=\"Page \" + Globals.PageNumber + \" of \" + Globals.TotalPages", "fontSizePt": 7.5, "align": "Right", "color": "#475569" }
+      ]
+    }
+  ]
+}

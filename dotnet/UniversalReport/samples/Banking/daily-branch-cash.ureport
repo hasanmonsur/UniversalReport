@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "1.0",
+  "reportId": "daily-branch-cash",
+  "title": "Daily Branch Cash Vault & Teller Reconciliation",
+  "page": {
+    "size": "A4",
+    "unit": "mm",
+    "orientation": "Portrait",
+    "margins": { "top": 14, "right": 14, "bottom": 14, "left": 14 }
+  },
+  "parameters": [
+    { "name": "BranchCode", "type": "String", "required": true, "defaultValue": "BD-0104 (Gulshan Avenue)" },
+    { "name": "BusinessDate", "type": "String", "required": true, "defaultValue": "2026-11-13" }
+  ],
+  "datasets": [
+    {
+      "name": "CashEntries",
+      "source": "External",
+      "fields": [
+        { "name": "TellerId", "type": "String" },
+        { "name": "Section", "type": "String" },
+        { "name": "CashIn", "type": "Decimal" },
+        { "name": "CashOut", "type": "Decimal" },
+        { "name": "NetPosition", "type": "Decimal" }
+      ]
+    }
+  ],
+  "bands": [
+    {
+      "id": "page-header",
+      "type": "PageHeader",
+      "height": 12,
+      "repeatOnEveryPage": true,
+      "elements": [
+        { "id": "hdr-branch", "type": "Text", "x": 0, "y": 0, "width": 120, "height": 5, "expression": "=\"Branch: \" + Parameters.BranchCode", "fontSizePt": 9, "fontWeight": "Bold", "color": "#0F172A" },
+        { "id": "hdr-dt", "type": "Text", "x": 120, "y": 0, "width": 62, "height": 5, "expression": "=Parameters.BusinessDate", "fontSizePt": 8.5, "align": "Right", "color": "#475569" }
+      ]
+    },
+    {
+      "id": "report-header",
+      "type": "ReportHeader",
+      "height": 20,
+      "elements": [
+        { "id": "cash-title", "type": "Text", "x": 0, "y": 0, "width": 182, "height": 7, "value": "DAILY BRANCH CASH REPORT", "fontSizePt": 14, "fontWeight": "Bold", "color": "#0F172A" },
+        { "id": "cash-sub", "type": "Text", "x": 0, "y": 9, "width": 182, "height": 5, "value": "Grouped by Counter Section · Vault & Teller Cash Position", "fontSizePt": 9, "color": "#475569" }
+      ]
+    },
+    {
+      "id": "group-header-section",
+      "type": "GroupHeader",
+      "groupBy": "Section",
+      "height": 9,
+      "elements": [
+        { "id": "grp-bg", "type": "Rectangle", "x": 0, "y": 1, "width": 182, "height": 7, "backgroundColor": "#F1F5F9", "borderColor": "#CBD5E1" },
+        { "id": "grp-lbl", "type": "Text", "x": 3, "y": 2.5, "width": 110, "height": 4.5, "expression": "=\"Section: \" + Fields.Section", "fontSizePt": 8.8, "fontWeight": "Bold", "color": "#0F172A" },
+        { "id": "grp-cnt", "type": "Text", "x": 120, "y": 2.5, "width": 58, "height": 4.5, "expression": "=Count(\"Group\") + \" teller(s)\"", "fontSizePt": 8.2, "align": "Right", "color": "#475569" }
+      ]
+    },
+    {
+      "id": "detail-cash",
+      "type": "Detail",
+      "dataset": "CashEntries",
+      "groupBy": "Section",
+      "elements": [
+        {
+          "id": "cash-table",
+          "type": "Table",
+          "x": 0,
+          "y": 0,
+          "width": 182,
+          "repeatHeaders": true,
+          "columns": [
+            { "header": "Teller / Vault", "expression": "=Fields.TellerId", "width": 38, "align": "Left" },
+            { "header": "Section", "expression": "=Fields.Section", "width": 54, "align": "Left" },
+            { "header": "Cash In", "expression": "=Fields.CashIn", "width": 30, "align": "Right", "format": "N2", "summary": "Sum" },
+            { "header": "Cash Out", "expression": "=Fields.CashOut", "width": 30, "align": "Right", "format": "N2", "summary": "Sum" },
+            { "header": "Net Position", "expression": "=Fields.CashIn - Fields.CashOut", "width": 30, "align": "Right", "format": "N2", "summary": "Sum" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "group-footer-section",
+      "type": "GroupFooter",
+      "height": 9,
+      "elements": [
+        { "id": "gf-lbl", "type": "Text", "x": 3, "y": 1.5, "width": 90, "height": 4.5, "expression": "=\"Subtotal (\" + Fields.Section + \")\"", "fontSizePt": 8.5, "fontWeight": "SemiBold", "color": "#334155" },
+        { "id": "gf-net", "type": "Text", "x": 100, "y": 1.5, "width": 78, "height": 4.5, "expression": "=Format(Sum(Fields.CashIn, \"Group\") - Sum(Fields.CashOut, \"Group\"), \"N2\")", "fontSizePt": 8.5, "fontWeight": "Bold", "align": "Right", "color": "#0F172A" }
+      ]
+    },
+    {
+      "id": "report-footer",
+      "type": "ReportFooter",
+      "height": 16,
+      "elements": [
+        { "id": "net-lbl", "type": "Text", "x": 0, "y": 4, "width": 100, "height": 5, "value": "Branch Closing Vault Net Flow (All Sections)", "fontSizePt": 9.5, "fontWeight": "Bold", "color": "#0F172A" },
+        { "id": "net-val", "type": "Text", "x": 102, "y": 4, "width": 80, "height": 5, "expression": "=Format(Sum(Fields.CashIn, \"CashEntries\") - Sum(Fields.CashOut, \"CashEntries\"), \"N2\")", "fontSizePt": 9.5, "fontWeight": "Bold", "align": "Right", "color": "#0F172A" }
+      ]
+    },
+    {
+      "id": "page-footer",
+      "type": "PageFooter",
+      "height": 10,
+      "repeatOnEveryPage": true,
+      "elements": [
+        { "id": "ftr-pg", "type": "Text", "x": 122, "y": 3, "width": 60, "height": 4, "expression": "=\"Page \" + Globals.PageNumber + \" of \" + Globals.TotalPages", "fontSizePt": 7.5, "align": "Right", "color": "#475569" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>UniversalReport.Rendering.Skia</PackageId>
+    <Description>Cross-platform SkiaSharp + HarfBuzz text shaping and PNG rasterization backend.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="QRCoder" Version="1.6.0" />
+    <PackageReference Include="SkiaSharp" Version="3.116.1" />
+    <PackageReference Include="SkiaSharp.HarfBuzz" Version="3.116.1" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="3.116.1" />
+    <PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" Version="8.3.0.1" />
+    <ProjectReference Include="..\UniversalReport.Core\UniversalReport.Core.csproj" />
+  </ItemGroup>
+</Project>

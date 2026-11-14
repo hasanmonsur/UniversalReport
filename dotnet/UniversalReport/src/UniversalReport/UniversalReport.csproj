@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>UniversalReport</PackageId>
+    <Description>All-in-one cross-platform RDLC-like reporting NuGet package for .NET 8/9/10 with PDF, Excel, HTML, CSV, PNG exporters and universal data source adapters.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UniversalReport.Core\UniversalReport.Core.csproj" />
+    <ProjectReference Include="..\UniversalReport.Definitions\UniversalReport.Definitions.csproj" />
+    <ProjectReference Include="..\UniversalReport.Expressions\UniversalReport.Expressions.csproj" />
+    <ProjectReference Include="..\UniversalReport.Data\UniversalReport.Data.csproj" />
+    <ProjectReference Include="..\UniversalReport.Layout\UniversalReport.Layout.csproj" />
+    <ProjectReference Include="..\UniversalReport.Rendering.Skia\UniversalReport.Rendering.Skia.csproj" />
+    <ProjectReference Include="..\UniversalReport.Export.Pdf\UniversalReport.Export.Pdf.csproj" />
+    <ProjectReference Include="..\UniversalReport.Export.Excel\UniversalReport.Export.Excel.csproj" />
+    <ProjectReference Include="..\UniversalReport.Export.Html\UniversalReport.Export.Html.csproj" />
+  </ItemGroup>
+</Project>

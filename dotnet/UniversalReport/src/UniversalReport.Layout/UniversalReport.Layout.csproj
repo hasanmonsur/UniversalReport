@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>UniversalReport.Layout</PackageId>
+    <Description>Deterministic Measure, Arrange, and Paginate layout engine producing immutable RenderDocument trees.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UniversalReport.Core\UniversalReport.Core.csproj" />
+    <ProjectReference Include="..\UniversalReport.Definitions\UniversalReport.Definitions.csproj" />
+    <ProjectReference Include="..\UniversalReport.Expressions\UniversalReport.Expressions.csproj" />
+    <ProjectReference Include="..\UniversalReport.Data\UniversalReport.Data.csproj" />
+  </ItemGroup>
+</Project>

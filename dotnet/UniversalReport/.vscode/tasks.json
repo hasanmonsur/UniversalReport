@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "command": "dotnet",
+      "type": "process",
+      "args": ["build", "${workspaceFolder}/UniversalReport.sln", "-c", "Debug"],
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "test",
+      "command": "dotnet",
+      "type": "process",
+      "args": ["test", "${workspaceFolder}/UniversalReport.sln", "-c", "Release"],
+      "group": { "kind": "test", "isDefault": true },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "pack-nuget",
+      "command": "dotnet",
+      "type": "process",
+      "args": ["pack", "${workspaceFolder}/UniversalReport.sln", "-c", "Release", "-o", "${workspaceFolder}/artifacts/nupkg"],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

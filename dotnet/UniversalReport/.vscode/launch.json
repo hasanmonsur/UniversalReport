@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Console Sample (.NET)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/samples/Console/bin/Debug/net8.0/UniversalReport.Samples.Console.dll",
+      "cwd": "${workspaceFolder}/samples/Console",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug ASP.NET Core API Host (.NET)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/samples/AspNetCoreHost/bin/Debug/net8.0/UniversalReport.Samples.AspNetCoreHost.dll",
+      "cwd": "${workspaceFolder}/samples/AspNetCoreHost",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:8080"
+      },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug Banking Sample (.NET)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/samples/Banking/bin/Debug/net8.0/UniversalReport.Samples.Banking.dll",
+      "cwd": "${workspaceFolder}/samples/Banking",
+      "console": "integratedTerminal"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0",
+  "reportId": "npsb-reconciliation",
+  "title": "NPSB Interbank Settlement & Exception Reconciliation",
+  "page": {
+    "size": "A4",
+    "unit": "mm",
+    "orientation": "Portrait",
+    "margins": { "top": 14, "right": 14, "bottom": 14, "left": 14 }
+  },
+  "parameters": [
+    { "name": "SettlementDate", "type": "String", "required": true, "defaultValue": "2026-11-13" },
+    { "name": "SwitchNode", "type": "String", "required": true, "defaultValue": "BB-NPSB-PRIMARY" }
+  ],
+  "datasets": [
+    {
+      "name": "SettlementRows",
+      "source": "External",
+      "fields": [
+        { "name": "Stan", "type": "String" },
+        { "name": "Channel", "type": "String" },
+        { "name": "Acquirer", "type": "String" },
+        { "name": "Amount", "type": "Decimal" },
+        { "name": "Variance", "type": "Decimal" },
+        { "name": "MatchStatus", "type": "String" }
+      ]
+    }
+  ],
+  "bands": [
+    {
+      "id": "page-header",
+      "type": "PageHeader",
+      "height": 12,
+      "repeatOnEveryPage": true,
+      "elements": [
+        { "id": "hdr-title", "type": "Text", "x": 0, "y": 0, "width": 115, "height": 5, "value": "NPSB Interbank Switch Settlement Reconciliation", "fontSizePt": 9, "fontWeight": "Bold", "color": "#0F172A" },
+        { "id": "hdr-date", "type": "Text", "x": 115, "y": 0, "width": 67, "height": 5, "expression": "=\"Settlement: \" + Parameters.SettlementDate", "fontSizePt": 8.5, "align": "Right", "color": "#475569" }
+      ]
+    },
+    {
+      "id": "report-header",
+      "type": "ReportHeader",
+      "height": 22,
+      "elements": [
+        { "id": "npsb-h1", "type": "Text", "x": 0, "y": 0, "width": 130, "height": 7, "value": "NPSB RECONCILIATION LEDGER", "fontSizePt": 14, "fontWeight": "Bold", "color": "#0F172A" },
+        { "id": "npsb-node", "type": "Text", "x": 0, "y": 9, "width": 100, "height": 5, "expression": "=\"Switch Node: \" + Parameters.SwitchNode", "fontSizePt": 9, "color": "#475569" },
+        { "id": "npsb-cnt", "type": "Text", "x": 105, "y": 9, "width": 77, "height": 5, "expression": "=\"Rows Audited: \" + Count(\"SettlementRows\")", "fontSizePt": 9, "align": "Right", "fontWeight": "SemiBold", "color": "#0F172A" }
+      ]
+    },
+    {
+      "id": "detail-npsb",
+      "type": "Detail",
+      "dataset": "SettlementRows",
+      "elements": [
+        {
+          "id": "npsb-table",
+          "type": "Table",
+          "x": 0,
+          "y": 0,
+          "width": 182,
+          "repeatHeaders": true,
+          "columns": [
+            { "header": "STAN", "expression": "=Fields.Stan", "width": 24, "align": "Left" },
+            { "header": "Channel", "expression": "=Fields.Channel", "width": 28, "align": "Left" },
+            { "header": "Counterparty Bank", "expression": "=Fields.Acquirer", "width": 52, "align": "Left" },
+            { "header": "Amount", "expression": "=Fields.Amount", "width": 28, "align": "Right", "format": "N2", "summary": "Sum" },
+            { "header": "Variance", "expression": "=Fields.Variance", "width": 24, "align": "Right", "format": "N2", "summary": "Sum" },
+            { "header": "Status", "expression": "=IIf(Fields.Variance == 0, \"Matched\", \"Exception\")", "width": 26, "align": "Center" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "report-footer",
+      "type": "ReportFooter",
+      "height": 16,
+      "elements": [
+        { "id": "npsb-tot-lbl", "type": "Text", "x": 0, "y": 4, "width": 90, "height": 5, "value": "Total Cleared Volume / Net Exception Variance", "fontSizePt": 9, "fontWeight": "Bold", "color": "#0F172A" },
+        { "id": "npsb-tot-val", "type": "Text", "x": 95, "y": 4, "width": 87, "height": 5, "expression": "=Format(Sum(Fields.Amount, \"SettlementRows\"), \"N2\") + \" / \" + Format(Sum(Fields.Variance, \"SettlementRows\"), \"N2\")", "fontSizePt": 9, "fontWeight": "Bold", "align": "Right", "color": "#0F172A" }
+      ]
+    },
+    {
+      "id": "page-footer",
+      "type": "PageFooter",
+      "height": 10,
+      "repeatOnEveryPage": true,
+      "elements": [
+        { "id": "ftr-pg", "type": "Text", "x": 122, "y": 3, "width": 60, "height": 4, "expression": "=\"Page \" + Globals.PageNumber + \" of \" + Globals.TotalPages", "fontSizePt": 7.5, "align": "Right", "color": "#475569" }
+      ]
+    }
+  ]
+}

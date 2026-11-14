@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>UniversalReport.Data</PackageId>
+    <Description>Data binding, decimal aggregation, grouping, and allowlisted data provider contracts.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UniversalReport.Core\UniversalReport.Core.csproj" />
+    <ProjectReference Include="..\UniversalReport.Expressions\UniversalReport.Expressions.csproj" />
+  </ItemGroup>
+</Project>

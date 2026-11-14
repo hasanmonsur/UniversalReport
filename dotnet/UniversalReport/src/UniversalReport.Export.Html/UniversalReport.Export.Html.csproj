@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>UniversalReport.Export.Html</PackageId>
+    <Description>Semantic HTML preview and UTF-8 CSV export with spreadsheet injection protection.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UniversalReport.Core\UniversalReport.Core.csproj" />
+  </ItemGroup>
+</Project>
